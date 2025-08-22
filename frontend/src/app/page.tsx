@@ -2,102 +2,123 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="w-full">
+      {/* Header */}
+      <div className="mb-8">
+        <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
+          Dashboard
+        </h1>
+        <p className="text-gray-600 dark:text-gray-400 mt-2">
+          Bienvenido al panel de administración
+        </p>
+      </div>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
+      {/* Stats Cards */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        {[...new Array(4)].map((_, idx) => (
+          <div
+            key={`stat-card-${idx}`}
+            className="bg-white dark:bg-neutral-800 p-6 rounded-lg border border-neutral-200 dark:border-neutral-700 shadow-sm"
+          >
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="text-sm font-medium text-gray-600 dark:text-gray-400">
+                  Métrica {idx + 1}
+                </p>
+                <p className="text-2xl font-bold text-gray-900 dark:text-white">
+                  {Math.floor(Math.random() * 1000)}
+                </p>
+              </div>
+              <div className="h-8 w-8 bg-blue-100 dark:bg-blue-900 rounded-full flex items-center justify-center">
+                <div className="h-4 w-4 bg-blue-500 rounded-full"></div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Content Area */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div className="bg-white dark:bg-neutral-800 p-6 rounded-lg border border-neutral-200 dark:border-neutral-700 shadow-sm">
+          <h2 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">
+            Actividad Reciente
+          </h2>
+          <div className="space-y-4">
+            {[...new Array(5)].map((_, idx) => (
+              <div key={`activity-${idx}`} className="flex items-center space-x-3">
+                <div className="h-2 w-2 bg-green-500 rounded-full"></div>
+                <span className="text-sm text-gray-600 dark:text-gray-400">
+                  Actividad #{idx + 1} - Hace {idx + 1} minutos
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="bg-white dark:bg-neutral-800 p-6 rounded-lg border border-neutral-200 dark:border-neutral-700 shadow-sm">
+          <h2 className="text-xl font-semibold mb-4 text-gray-900 dark:text-white">
+            Quick Actions
+          </h2>
+          <div className="space-y-3">
+            <button className="w-full bg-blue-500 hover:bg-blue-600 text-white font-medium py-2 px-4 rounded-lg transition-colors">
+              Nueva Acción
+            </button>
+            <button className="w-full bg-gray-100 hover:bg-gray-200 dark:bg-neutral-700 dark:hover:bg-neutral-600 text-gray-900 dark:text-white font-medium py-2 px-4 rounded-lg transition-colors">
+              Ver Reportes
+            </button>
+            <button className="w-full bg-gray-100 hover:bg-gray-200 dark:bg-neutral-700 dark:hover:bg-neutral-600 text-gray-900 dark:text-white font-medium py-2 px-4 rounded-lg transition-colors">
+              Configuración
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Footer */}
+      <div className="mt-8 text-center">
+        <div className="flex flex-wrap justify-center gap-6 text-sm text-gray-600 dark:text-gray-400">
           <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+            className="flex items-center gap-2 hover:underline hover:underline-offset-4"
+            href="https://nextjs.org/learn"
             target="_blank"
             rel="noopener noreferrer"
           >
             <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+              aria-hidden
+              src="/file.svg"
+              alt="File icon"
+              width={16}
+              height={16}
             />
-            Deploy now
+            Documentación
           </a>
           <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            className="flex items-center gap-2 hover:underline hover:underline-offset-4"
+            href="#"
           >
-            Read our docs
+            <Image
+              aria-hidden
+              src="/window.svg"
+              alt="Window icon"
+              width={16}
+              height={16}
+            />
+            Ejemplos
+          </a>
+          <a
+            className="flex items-center gap-2 hover:underline hover:underline-offset-4"
+            href="#"
+          >
+            <Image
+              aria-hidden
+              src="/globe.svg"
+              alt="Globe icon"
+              width={16}
+              height={16}
+            />
+            Soporte
           </a>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </div>
     </div>
   );
 }
