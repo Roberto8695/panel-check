@@ -46,7 +46,7 @@ interface DiffusionChartProps {
 }
 
 export function DiffusionChart({ articles, timeRange, className = '' }: DiffusionChartProps) {
-  const chartRef = useRef<any>(null);
+  const chartRef = useRef<ChartJS<'line'>>(null);
 
   const chartData = useMemo(() => {
     // Filtrar artículos por rango de tiempo
@@ -188,7 +188,7 @@ export function DiffusionChart({ articles, timeRange, className = '' }: Diffusio
         displayColors: true,
         usePointStyle: true,
         callbacks: {
-          label: function(context: any) {
+          label: function(context: { dataset: { label?: string }; parsed: { y: number } }) {
             const label = context.dataset.label || '';
             const value = context.parsed.y;
             
@@ -261,8 +261,8 @@ export function DiffusionChart({ articles, timeRange, className = '' }: Diffusio
           font: {
             size: 11,
           },
-          callback: function(value: any) {
-            return value.toLocaleString();
+          callback: function(value: string | number) {
+            return typeof value === 'number' ? value.toLocaleString() : value;
           },
         },
       },

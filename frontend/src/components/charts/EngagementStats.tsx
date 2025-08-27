@@ -1,8 +1,7 @@
 "use client";
 import React, { useMemo } from 'react';
 import { IconTrendingUp, IconTrendingDown, IconMinus, IconEye, IconHeart, IconMessageCircle, IconShare } from '@tabler/icons-react';
-import { format, parseISO, subDays, isAfter } from 'date-fns';
-import { es } from 'date-fns/locale';
+import { parseISO, subDays, isAfter } from 'date-fns';
 
 interface Article {
   id: string | number;
@@ -126,7 +125,7 @@ export function EngagementStats({ articles, className = '' }: EngagementStatsPro
     change, 
     color 
   }: {
-    icon: React.ComponentType<any>;
+    icon: React.ComponentType<{ className?: string }>;
     label: string;
     value: number;
     trend: 'up' | 'down' | 'neutral';

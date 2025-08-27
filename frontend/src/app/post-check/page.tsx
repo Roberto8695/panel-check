@@ -6,28 +6,6 @@ import { ConnectionStatus } from '@/components/ui/ConnectionStatus';
 import { DiffusionChart } from '@/components/charts/DiffusionChart';
 import { EngagementStats } from '@/components/charts/EngagementStats';
 
-interface Article {
-  id: string | number;
-  title: string;
-  summary?: string;
-  url: string;
-  language?: string;
-  status: string;
-  imported?: boolean;
-  createdAt?: string;
-  updatedAt?: string;
-  source?: string;
-  format?: string;
-  tags?: string[];
-  engagement?: {
-    reactions: number;
-    comments: number;
-    shares: number;
-    views: number;
-  };
-  metadata?: any;
-}
-
 export default function PostCheckPage() {
   const { 
     articles, 

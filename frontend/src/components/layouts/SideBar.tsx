@@ -15,6 +15,8 @@ interface SidebarLayoutProps {
   children: React.ReactNode;
 }
 
+import Image from 'next/image';
+
 export function SidebarLayout({ children }: SidebarLayoutProps) {
   const links = [
     {
@@ -77,7 +79,7 @@ export function SidebarLayout({ children }: SidebarLayoutProps) {
                 label: "Usuario",
                 href: "#",
                 icon: (
-                  <img
+                  <Image
                     src="https://assets.aceternity.com/manu.png"
                     className="h-7 w-7 shrink-0 rounded-full"
                     width={50}
@@ -155,7 +157,7 @@ export function SidebarDemo() {
                 label: "Manu Arora",
                 href: "#",
                 icon: (
-                  <img
+                  <Image
                     src="https://assets.aceternity.com/manu.png"
                     className="h-7 w-7 shrink-0 rounded-full"
                     width={50}

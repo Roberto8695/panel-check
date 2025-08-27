@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 export default function ProfilePage() {
   return (
     <div className="w-full">
@@ -15,9 +17,11 @@ export default function ProfilePage() {
         <div className="lg:col-span-1">
           <div className="bg-white dark:bg-neutral-800 p-6 rounded-lg border border-neutral-200 dark:border-neutral-700 shadow-sm">
             <div className="text-center">
-              <img
+              <Image
                 src="https://assets.aceternity.com/manu.png"
                 alt="Profile"
+                width={96}
+                height={96}
                 className="w-24 h-24 rounded-full mx-auto mb-4"
               />
               <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
