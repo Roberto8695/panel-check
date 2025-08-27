@@ -6,6 +6,7 @@ import {
   IconBrandTabler,
   IconSettings,
   IconUserBolt,
+  IconFileText,
 } from "@tabler/icons-react";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
@@ -21,6 +22,13 @@ export function SidebarLayout({ children }: SidebarLayoutProps) {
       href: "/",
       icon: (
         <IconBrandTabler className="h-5 w-5 shrink-0 text-neutral-700 dark:text-neutral-200" />
+      ),
+    },
+    {
+      label: "Post Check",
+      href: "/post-check",
+      icon: (
+        <IconFileText className="h-5 w-5 shrink-0 text-neutral-700 dark:text-neutral-200" />
       ),
     },
     {
@@ -82,8 +90,8 @@ export function SidebarLayout({ children }: SidebarLayoutProps) {
           </div>
         </SidebarBody>
       </Sidebar>
-      <main className="flex flex-1">
-        <div className="flex h-full w-full flex-1 flex-col gap-2 rounded-tl-2xl border border-neutral-200 bg-white p-2 md:p-10 dark:border-neutral-700 dark:bg-neutral-900">
+      <main className="flex flex-1 h-screen">
+        <div className="flex h-full w-full flex-1 flex-col gap-2 rounded-tl-2xl border border-neutral-200 bg-white p-2 md:p-10 dark:border-neutral-700 dark:bg-neutral-900 overflow-y-auto">
           {children}
         </div>
       </main>
@@ -176,7 +184,7 @@ export const Logo = () => {
         animate={{ opacity: 1 }}
         className="font-medium whitespace-pre text-black dark:text-white"
       >
-        Acet Labs
+        ChequeaBolivia
       </motion.span>
     </a>
   );
