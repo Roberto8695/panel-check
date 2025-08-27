@@ -1,0 +1,6 @@
+{
+  "deploy": {
+    "restartPolicyType": "ON_FAILURE",
+    "numReplicas": 1
+  }
+}
