@@ -15,10 +15,10 @@ export default function ProfilePage() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         {/* Profile Info */}
         <div className="lg:col-span-1">
-          <div className="bg-white dark:bg-neutral-800 p-6 rounded-lg border border-neutral-200 dark:border-neutral-700 shadow-sm">
+          <div className="bg-neutral-800 dark:bg-neutral-800 p-6 rounded-lg border border-neutral-200 dark:border-neutral-700 shadow-sm">
             <div className="text-center">
               <Image
-                src="https://assets.aceternity.com/manu.png"
+                src="/avatars/default-user.svg"
                 alt="Profile"
                 width={96}
                 height={96}
@@ -36,7 +36,7 @@ export default function ProfilePage() {
 
         {/* Profile Form */}
         <div className="lg:col-span-2">
-          <div className="bg-white dark:bg-neutral-800 p-6 rounded-lg border border-neutral-200 dark:border-neutral-700 shadow-sm">
+          <div className="bg-neutral-800 dark:bg-neutral-800 p-6 rounded-lg border border-neutral-200 dark:border-neutral-700 shadow-sm">
             <h3 className="text-lg font-semibold mb-6 text-gray-900 dark:text-white">
               Información Personal
             </h3>

@@ -40,14 +40,14 @@ export default function Dashboard() {
       {/* Header con estado de conexión - Más compacto */}
       <div className="flex justify-between items-center">
         <div>
-          <h1 className="text-xl font-bold text-gray-900">Panel de Control</h1>
-          <p className="text-sm text-gray-600">Monitoreo de verificaciones y desinformación</p>
+          <h1 className="text-xl font-bold text-white">Panel de Control</h1>
+          <p className="text-sm text-white">Monitoreo de verificaciones y desinformación</p>
         </div>
         <ConnectionStatus isConnected={isConnected} lastUpdated={lastUpdated} />
       </div>
 
       {/* Estadísticas de engagement - Más compactas */}
-      <div className="bg-white rounded-lg shadow-sm">
+      <div className="bg-neutral-800 rounded-lg shadow-sm">
         <EngagementStats articles={articles} />
       </div>
 
@@ -58,12 +58,12 @@ export default function Dashboard() {
           <DiffusionChart 
             articles={articles} 
             timeRange="30d"
-            className="bg-white rounded-lg shadow-sm h-80"
+            className="bg-neutral-800 rounded-lg shadow-sm h-80"
           />
         </div>
 
         {/* Resumen de artículos - Más compacto */}
-        <div className="bg-white rounded-lg shadow-sm p-4">
+        <div className="bg-neutral-800 rounded-lg shadow-sm p-4">
           <h2 className="text-base font-semibold mb-3">Resumen de Verificaciones</h2>
           <div className="space-y-3">
             <div className="bg-blue-50 p-3 rounded-lg">
@@ -94,25 +94,25 @@ export default function Dashboard() {
 
       {/* Estadísticas adicionales en una fila */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-        <div className="bg-white rounded-lg shadow-sm p-3 text-center">
+        <div className="bg-neutral-800 rounded-lg shadow-sm p-3 text-center">
           <div className="text-lg font-bold text-purple-600">
             {articles.filter(a => a.status === 'Engañoso').length}
           </div>
           <div className="text-xs text-purple-600">Engañosos</div>
         </div>
-        <div className="bg-white rounded-lg shadow-sm p-3 text-center">
-          <div className="text-lg font-bold text-gray-600">
+        <div className="bg-neutral-800 rounded-lg shadow-sm p-3 text-center">
+          <div className="text-lg font-bold text-green-600">
             {articles.filter(a => a.status === 'Sin iniciar').length}
           </div>
-          <div className="text-xs text-gray-600">Sin iniciar</div>
+          <div className="text-xs text-green-600">Sin iniciar</div>
         </div>
-        <div className="bg-white rounded-lg shadow-sm p-3 text-center">
+        <div className="bg-neutral-800 rounded-lg shadow-sm p-3 text-center">
           <div className="text-lg font-bold text-orange-600">
             {articles.filter(a => a.status === 'Inconcluso').length}
           </div>
           <div className="text-xs text-orange-600">Inconclusos</div>
         </div>
-        <div className="bg-white rounded-lg shadow-sm p-3 text-center">
+        <div className="bg-neutral-800 rounded-lg shadow-sm p-3 text-center">
           <div className="text-lg font-bold text-indigo-600">
             {articles.filter(a => a.source).length}
           </div>

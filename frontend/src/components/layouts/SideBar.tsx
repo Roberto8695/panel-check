@@ -80,7 +80,7 @@ export function SidebarLayout({ children }: SidebarLayoutProps) {
                 href: "#",
                 icon: (
                   <Image
-                    src="https://assets.aceternity.com/manu.png"
+                    src="/avatars/default-user.svg"
                     className="h-7 w-7 shrink-0 rounded-full"
                     width={50}
                     height={50}
@@ -154,11 +154,11 @@ export function SidebarDemo() {
           <div>
             <SidebarLink
               link={{
-                label: "Manu Arora",
+                label: "Admin User",
                 href: "#",
                 icon: (
                   <Image
-                    src="https://assets.aceternity.com/manu.png"
+                    src="/avatars/default-user.svg"
                     className="h-7 w-7 shrink-0 rounded-full"
                     width={50}
                     height={50}
