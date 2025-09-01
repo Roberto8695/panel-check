@@ -53,7 +53,7 @@ interface UseArticlesReturn {
   createArticle: (articleData: Partial<Article>) => Promise<Article | null>;
 }
 
-const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || '/api/backend';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5001/api';
 
 export const useArticles = (autoRefresh = true, refreshInterval = 30000): UseArticlesReturn => {
   const [articles, setArticles] = useState<Article[]>([]);
