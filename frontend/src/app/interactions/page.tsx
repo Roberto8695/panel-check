@@ -1,12 +1,44 @@
 "use client";
 import React from 'react';
 import { useInteractionStats } from '@/hooks/useInteractionStats';
+import { useCountUp } from '@/hooks/useCountUp';
 import { ConnectionStatus } from '@/components/ui/ConnectionStatus';
-import { SimpleChart } from '@/components/charts/SimpleChart';
+import { AnimatedChart } from '@/components/charts/AnimatedChart';
 import { IconRefresh, IconTrendingUp } from '@tabler/icons-react';
 
 export default function InteractionsPage() {
   const { stats, loading, error, lastUpdated, fetchStats } = useInteractionStats();
+
+  // Animaciones para los números del resumen
+  const totalInteractionsCount = useCountUp({ 
+    end: stats?.totalInteractions || 0, 
+    duration: 2500, 
+    delay: 600 
+  });
+  
+  const socialMediaCount = useCountUp({ 
+    end: Object.keys(stats?.socialMedia || {}).length, 
+    duration: 1500, 
+    delay: 700 
+  });
+  
+  const statusCount = useCountUp({ 
+    end: Object.keys(stats?.status || {}).length, 
+    duration: 1500, 
+    delay: 800 
+  });
+  
+  const formatCount = useCountUp({ 
+    end: Object.keys(stats?.format || {}).length, 
+    duration: 1500, 
+    delay: 900 
+  });
+  
+  const tagsCount = useCountUp({ 
+    end: Object.keys(stats?.tags || {}).length, 
+    duration: 1500, 
+    delay: 1000 
+  });
 
   if (loading && !stats) {
     return (
@@ -41,7 +73,7 @@ export default function InteractionsPage() {
   return (
     <div className="w-full space-y-6">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 opacity-0 animate-fade-in-up">
         <div>
           <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
             Interacciones Acumuladas
@@ -70,7 +102,7 @@ export default function InteractionsPage() {
 
       {/* Stats Summary */}
       {stats && (
-        <div className="bg-white dark:bg-neutral-800 rounded-lg border border-neutral-200 dark:border-neutral-700 shadow-sm p-6">
+        <div className="bg-white dark:bg-neutral-800 rounded-lg border border-neutral-200 dark:border-neutral-700 shadow-sm p-6 opacity-0 animate-fade-in-up delay-100">
           <div className="flex items-center gap-3 mb-4">
             <IconTrendingUp className="h-6 w-6 text-blue-500" />
             <h2 className="text-lg font-semibold text-gray-900 dark:text-white">
@@ -81,7 +113,7 @@ export default function InteractionsPage() {
           <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
             <div className="text-center">
               <div className="text-2xl font-bold text-blue-600 dark:text-blue-400">
-                {stats?.totalInteractions?.toLocaleString() || 0}
+                {totalInteractionsCount.count.toLocaleString()}
               </div>
               <div className="text-sm text-gray-600 dark:text-gray-400">
                 Total Interacciones
@@ -90,7 +122,7 @@ export default function InteractionsPage() {
             
             <div className="text-center">
               <div className="text-2xl font-bold text-green-600 dark:text-green-400">
-                {Object.keys(stats?.socialMedia || {}).length}
+                {socialMediaCount.count}
               </div>
               <div className="text-sm text-gray-600 dark:text-gray-400">
                 Redes Sociales
@@ -99,7 +131,7 @@ export default function InteractionsPage() {
             
             <div className="text-center">
               <div className="text-2xl font-bold text-purple-600 dark:text-purple-400">
-                {Object.keys(stats?.status || {}).length}
+                {statusCount.count}
               </div>
               <div className="text-sm text-gray-600 dark:text-gray-400">
                 Estados
@@ -108,7 +140,7 @@ export default function InteractionsPage() {
             
             <div className="text-center">
               <div className="text-2xl font-bold text-yellow-600 dark:text-yellow-400">
-                {Object.keys(stats?.format || {}).length}
+                {formatCount.count}
               </div>
               <div className="text-sm text-gray-600 dark:text-gray-400">
                 Formatos
@@ -117,7 +149,7 @@ export default function InteractionsPage() {
             
             <div className="text-center">
               <div className="text-2xl font-bold text-orange-600 dark:text-orange-400">
-                {Object.keys(stats?.tags || {}).length}
+                {tagsCount.count}
               </div>
               <div className="text-sm text-gray-600 dark:text-gray-400">
                 Tags
@@ -131,9 +163,9 @@ export default function InteractionsPage() {
       {stats && (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {/* Red Social */}
-          <div>
+          <div className="opacity-0 animate-fade-in-up delay-200">
             {stats.socialMedia ? (
-              <SimpleChart
+              <AnimatedChart
                 title="Red Social"
                 data={stats.socialMedia}
                 color="rgb(59, 130, 246)" // blue-500
@@ -146,8 +178,8 @@ export default function InteractionsPage() {
           </div>
           
           {/* Status */}
-          <div>
-            <SimpleChart
+          <div className="opacity-0 animate-fade-in-up delay-300">
+            <AnimatedChart
               title="Status"
               data={stats.status}
               color="rgb(16, 185, 129)" // green-500
@@ -155,8 +187,8 @@ export default function InteractionsPage() {
           </div>
           
           {/* Formato */}
-          <div>
-            <SimpleChart
+          <div className="opacity-0 animate-fade-in-up delay-400">
+            <AnimatedChart
               title="Formato"
               data={stats.format}
               color="rgb(245, 158, 11)" // yellow-500
@@ -164,8 +196,8 @@ export default function InteractionsPage() {
           </div>
           
           {/* Tags */}
-          <div>
-            <SimpleChart
+          <div className="opacity-0 animate-fade-in-up delay-500">
+            <AnimatedChart
               title="Tags"
               data={stats.tags || {}}
               color="rgb(139, 92, 246)" // purple-500
